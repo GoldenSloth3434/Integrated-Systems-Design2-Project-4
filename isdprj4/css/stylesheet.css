@@ -1,0 +1,183 @@
+body, html {
+    background-color: #f5f5f5;
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 00px;
+}
+
+p{
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+.col3a {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    padding-left: 55%;
+    background-repeat: no-repeat;
+/*    background-image: url(/img/mario.png);*/
+    grid-column-end: span 3;
+/*    background-color: #a0a0a0;*/
+    padding-top: 30px;
+    height: 35vh;
+}
+.col3b {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    text-align: center;
+    font-size: 2em;
+    grid-column-end: span 6;
+/*    background-color: aqua;*/
+    padding-top: 30px;
+    height: 35vh;
+}
+.col3c {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    background-repeat: no-repeat;
+/*    background-image: url(/img/kirby.png);*/
+    grid-column-end: span 3;
+/*    background-color: #a0a0a0;*/
+    padding-top: 30px;
+    height: 35vh;
+}
+.input{
+    padding-top: 10%;
+}
+.searchBar{
+    font-size: 30px;
+/*    padding-top: 15px;*/
+}
+.searchButton{
+    font-size: 1em;
+}
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("http://ixd1711.firebird.sheridanc.on.ca/isdprj4assets/header270.png");
+  height: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 105%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #212529;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.APILink{
+    text-align: center;
+}
+
+.resourcelink{
+    font-size: 1em;
+    color: #6c757d;
+}
+h1{
+    text-align: center;
+}
+a{
+    font-size: 1.2em;
+}
+.smash{
+/*    font-size: 20em;*/
+    padding-left: 9%;
+    
+}
+.mario{
+/*    font-size: 20em;*/
+    padding-left: 11%;
+}
+.ac{
+/*    font-size: 20em;*/
+    padding-left: 12%;
+}
+.loz{
+/*    font-size: 20em;*/
+    padding-left: 10%;
+}
+.splatoon{
+/*    font-size: 20em;*/
+    padding-left: 11%;
+}
+
+.logos{
+    padding-top: 5%;
+    text-align: center;
+    align-content: center;
+}
+.logo1{
+    padding-right: 44px;
+}
+.logo2{
+    padding-right: 44px;
+}
+.logo3{
+    padding-right: 44px;
+}
+.logo4{
+    padding-right: 44px;
+}
+.logo5{
+}
+.suggest{
+    font-size: 0.7em;
+}
+.previewImage{
+    align-content: center;
+text-align: center;
+    padding-left: 45%;
+    padding-right: 5%;
+    position:relative;
+}
+
+.amiiboCharacterName{
+    font-size: 1.5em;
+    text-align: center;
+    align-content: center;
+    padding-bottom: 5%;
+}
+
+footer {
+    padding-top: 1%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+    height: 4%;
+  background-color: #212529;
+  color:#6c757d;
+  text-align: center;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--FONT IMPORTS-->
+<!--HEADING FONT-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;900&display=swap" rel="stylesheet">    
+    
+<!--CONTENT FONT-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    
+<!--FAVICON CODE-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="theme-color" content="#ffffff">
+
+    <title>Amiibo Hub</title>
+</head>
+
+<body>
+<!--HEADER IMAGE-->
+<div class="hero-image">
+  <div class="hero-text">
+    <h1 style="font-size:50px"></h1>
+      
+      
+<!--NAV BAR -->
+      <ul>
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="myList.html">My List</a></li>
+          <li><a href="amiiboSeries.html">Amiibo Series</a></li>
+          <li><a href="gameSeries.html">Game Series</a></li>
+          <li><a href="search.html">Search</a></li>
+      </ul>
+      
+  </div>
+</div>
+    
+    <div class="grid">
+<div class="cell col3a"></div>
+        <div class="cell col3b"><form class="input" action="/action_page.php">
+          <form>
+        <label for="fname">Game Series:</label>
+        <input class="searchBar" type="text" id="searchTxt" name="searchText"><br><br>
+        <input class="searchButton" type="button" onclick="searchName()" value="Search">
+      </form>
+ 
+</form>
+            <p class="suggest">Suggested Searches:
+            <br> Fire Emblem
+            <br> Splatoon
+            <br> Animal Crossing
+            </p>
+            
+    </div>
+        <div class="cell col3c"></div>
+    </div>
+  <br>
+                <br>
+                <br>
+    <div id="id01"></div>
+    
+<!--API STUFF HERE-->
+<script>
+
+const searchName = () => {
+  var xmlhttp = new XMLHttpRequest();
+  var hostname = "https://amiiboapi.com/api/amiibo/?gameseries=";
+  var paramName = document.getElementById("searchTxt").value;
+  console.log("PARAM: " + paramName);
+  var url = hostname + paramName;
+  //Preparing my request to the API 
+  xmlhttp.onreadystatechange = function() {
+  //Make sure the repsonse from the aAPI is successful
+    if (this.readyState == 4 && this.status == 200) {
+  //taking th response from the API and making it code readable
+      var myArr = JSON.parse(this.responseText);
+      removeElementsByClass("previewImage");
+      removeElementsByClass("amiiboCharacterName");
+      removeElementsByClass("errorMessage");
+      displaySearchRequest(myArr);
+      
+    } else if (this.status == 404){
+      document.getElementById("id01").innerHTML += "<h1 class=\"errorMessage\">404 Error, Not found!</h1>";
+      removeElementsByClass("previewImage");
+      removeElementsByClass("amiiboCharacterName");
+    }
+  };
+  //Begins request
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+
+  function removeElementsByClass(className){
+    const elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+  }
+
+  function displaySearchRequest(arr) {
+
+    var amiiboImage = [];
+    var amiiboArray = arr.amiibo;
+    var amiiboDescArray =[];
+  //    i means incriment
+    var i;
+  //loop
+    for(i = 0; i < amiiboArray.length; i++) {
+      amiiboImage.push(amiiboArray[i].image); 
+        var amiiboDesc = "Amiibo Series: " + amiiboArray[i].amiiboSeries + "<br> Character: " + amiiboArray[i].character + "<br> Game Series: " + amiiboArray[i].gameSeries + "<br> Name: " + amiiboArray[i].name + "<br> Type: " + amiiboArray[i].type;
+        amiiboDescArray.push(amiiboDesc);
+    }
+    i=0;
+  //strigify turns JSON data into a string
+
+  //  document.getElementById("id01").innerHTML = JSON.stringify(arr);}
+    for(i = 0; i < amiiboArray.length; i++) {
+        var imageTag = "<img class=\"previewImage\" src=\"" + amiiboImage[i] + "\" alt=\"" + amiiboArray.charcter + "\" style=\"width=\"300px\" height=\"300px\">"
+        
+        var detailsTag = "<details class=\"amiiboCharacterName\" ><summary>" + amiiboArray[i].name + "</summary><p> "+ amiiboDescArray[i] +  "<p></details>";
+        document.getElementById("id01").innerHTML += imageTag;
+        document.getElementById("id01").innerHTML += detailsTag;
+    }
+  }
+    
+  //    pulling from the API which displays ints information in an array, so we say array.amiibo, the name at the top, [0], image and that gives us the image url
+  //    document.getElementById("id01").innerHTML = amiiboImage[0];}
+}
+</script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>  
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<footer>
+Created by DJ Claessens <br><a href="https://amiiboapi.com" class="resourcelink">Link to AmiiboAPI</a>
+</footer>
+    
+</body>
+</html>
+<link rel="stylesheet" href="css/stylesheet.css">
